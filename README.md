@@ -1,6 +1,6 @@
-# Football Explorer
+# 12thMan
 
-Football Explorer is a web application that allows users to browse football competitions, search for teams, and view upcoming matches. The project uses modern web technologies to provide an engaging and interactive user experience.
+12thMan is a web application that allows users to browse football competitions, search for teams, and view upcoming matches. The project uses modern web technologies to provide an engaging and interactive user experience.
 
 ---
 
