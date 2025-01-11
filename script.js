@@ -1,5 +1,3 @@
-const baseUrl = 'https://twelfthman.vercel.app/api';
-
 // Check if the page is being loaded fresh or reloaded
 if (!sessionStorage.getItem("isReloaded")) {
     // If it's not reloaded, mark it as reloaded and set the redirect
@@ -54,7 +52,7 @@ document.addEventListener('DOMContentLoaded', async() => {
 
         if (teamName) {
             try {
-                const response = await fetch(`${baseUrl}/teams/search?name=${teamName}`);
+                const response = await fetch(`http://localhost:3000/teams/search?name=${teamName}`);
                 const teamData = await response.json();
 
                 const resultsContainer = document.getElementById('search-results');
@@ -93,7 +91,7 @@ document.addEventListener('DOMContentLoaded', async() => {
 
     async function fetchTeamDetails(teamId) {
         try {
-            const response = await fetch(`${baseUrl}/teams/${teamId}`);
+            const response = await fetch(`http://localhost:3000/teams/${teamId}`);
             const teamDetails = await response.json();
             const resultsContainer = document.getElementById('search-results');
             resultsContainer.innerHTML = ''; // Clear previous results
@@ -129,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async() => {
 </p>
 `;
 
-            const response = await fetch(`${baseUrl}/competitions`);
+            const response = await fetch('http://localhost:3000/competitions');
             const competitions = await response.json();
             competitionMessage.textContent = '✦ Football Competitions ✦';
 
@@ -176,7 +174,7 @@ document.addEventListener('DOMContentLoaded', async() => {
             Loading matches...
           </p>
           `;
-            const response = await fetch(`${baseUrl}/matches/${competitionId}`);
+            const response = await fetch(`http://localhost:3000/matches/${competitionId}`);
             const data = await response.json();
 
             if (data.matches == 'No upcoming matches.') {
