@@ -33,8 +33,8 @@ Ensure you have the following installed on your system:
 ### Steps
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/football-explorer.git
-   cd football-explorer
+   git clone https://github.com/abhinavxk0/twelfthman.git
+   cd twelfthman
    ```
 2. Install dependencies:
    ```bash
@@ -42,7 +42,7 @@ Ensure you have the following installed on your system:
    ```
 3. Start the backend server:
    ```bash
-   npm run start
+   node server.js
    ```
 4. Open the `index.html` file in your browser or set up a local server for the frontend.
 
@@ -50,17 +50,29 @@ Ensure you have the following installed on your system:
 
 ## Folder Structure
 ```
-football-explorer/
-|-- css/                 # Stylesheets
-|   |-- styles.css       # Main CSS file
-|-- js/                  # JavaScript files
-|   |-- script.js        # Main script
-|-- loading/             # Loading animation assets
-|   |-- loading.gif      # Loading spinner
-|-- splashscreen/        # Splash screen files
-|   |-- splashscreen.html
-|-- index.html           # Entry point of the app
-|-- README.md            # Documentation
+twelfthman/
+|-- server.js              # Backend server script
+|-- script.js              # Main JavaScript script
+|-- package.json           # Node.js dependencies and metadata
+|-- package-lock.json      # Lock file for exact dependency versions
+|-- README.md              # Project documentation
+|-- match-details.html     # HTML for match details
+|-- main.html              # Main HTML file
+|-- favicon.ico            # Website favicon
+|-- fonts/                 # Font files
+|   |-- BebasNeue-Regular.ttf
+|   |-- Poppins-Extrabold.ttf
+|   |-- RobotoCondensed-VariableFont-wght.ttf
+|-- loading/               # Loading animation assets
+|   |-- loading.gif        # Loading spinner
+|-- splashscreen/          # Splash screen files
+|   |-- splashscreen.css   # Splash screen styles
+|   |-- splashscreen.html  # Splash screen markup
+|   |-- splashscreen.js    # Splash screen script
+|-- styling/               # Stylesheets
+|   |-- main.css           # Main styles
+|   |-- match-details.css  # Match details styles
+
 ```
 
 ---
@@ -69,6 +81,7 @@ football-explorer/
 ### Teams
 - **Search Teams by Name:** `GET /teams/search?name=<teamName>`
 - **Get Team Details by ID:** `GET /teams/:id`
+- **Get Team Matches by ID:** `GET /teams/:id/matches`
 
 ### Competitions
 - **Get All Competitions:** `GET /competitions`
@@ -126,9 +139,3 @@ Contributions are welcome! Feel free to fork this repository and submit pull req
 This project is licensed under the [MIT License](LICENSE).
 
 ---
-
-## Contact
-For queries or support, contact the project maintainer:
-- **Name:** [Your Name]
-- **Email:** your-email@example.com
-- **GitHub:** [your-username](https://github.com/your-username)
