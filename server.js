@@ -24,7 +24,7 @@ app.get('/competitions', async(req, res) => {
 
         // Download logos for each competition and attach the logo path
         const competitionsWithLogos = await Promise.all(response.data.competitions.map(async competition => {
-            const logoPath = await downloadLogo(competition.name, competition.emblem);
+            const logoPath = competition.emblem;
             return {...competition, logo: logoPath };
         }));
 
@@ -55,8 +55,8 @@ app.get('/matches/:competitionId', async(req, res) => {
         }
 
         const matchesWithLogos = await Promise.all(upcomingMatches.map(async match => {
-            const homeLogo = await downloadLogo(match.homeTeam.name, match.homeTeam.crest);
-            const awayLogo = await downloadLogo(match.awayTeam.name, match.awayTeam.crest);
+            const homeLogo = match.homeTeam.crest
+            const awayLogo = match.awayTeam.crest
             return {
                 ...match,
                 homeTeam: {...match.homeTeam, logo: homeLogo },
@@ -142,23 +142,6 @@ app.get('/teams/:id/matches', async(req, res) => {
         res.status(500).json({ error: 'Error fetching team details', details: error.message });
     }
 })
-
-// Download and cache competition logos
-async function downloadLogo(teamName, logoUrl) {
-    const logoPath = path.join(LOGOS_DIR, `${teamName.replace(/[^a-zA-Z0-9]/g, '_')}.png`);
-    if (fs.existsSync(logoPath)) {
-        return `/logos/${teamName.replace(/[^a-zA-Z0-9]/g, '_')}.png`;
-    }
-    try {
-        const response = await axios.get(logoUrl, { responseType: 'arraybuffer' });
-        fs.writeFileSync(logoPath, response.data);
-        console.log(`Logo downloaded: ${teamName}`);
-        return `/logos/${teamName.replace(/[^a-zA-Z0-9]/g, '_')}.png`;
-    } catch (error) {
-        console.error(`Error downloading logo for ${teamName}:`, error.message);
-        return '/logos/default.png'; // Return a default logo if there's an error
-    }
-}
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
