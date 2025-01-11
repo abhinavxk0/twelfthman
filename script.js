@@ -1,4 +1,4 @@
-const baseUrl = 'https://twelfthman-37fe10dc8-abhinavvxks-projects.vercel.app/api';
+const baseUrl = 'https://twelfthman.vercel.app/api';
 
 // Check if the page is being loaded fresh or reloaded
 if (!sessionStorage.getItem("isReloaded")) {
